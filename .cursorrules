@@ -1,0 +1,293 @@
+# SONNTAG AG Website - Cursor Rules
+
+## 🎯 **Project Overview**
+SONNTAG AG website rebuild focusing on clean UI/UX with white backgrounds and blacks, maintaining Tailwind CSS Plus component fidelity while adapting for brand consistency.
+
+## 🏗️ **Architecture & Organization**
+
+### **Component Structure: Feature-Based with Atomic Design**
+```
+src/components/
+├── ui/                    # Atomic design components
+│   ├── atoms/            # Basic building blocks (buttons, inputs, etc.)
+│   ├── molecules/        # Simple combinations (form fields, cards, etc.)
+│   └── organisms/        # Complex sections (headers, footers, etc.)
+├── features/              # Feature-based organization
+│   ├── hero/             # Hero sections
+│   ├── services/         # Service showcases
+│   ├── about/            # About sections
+│   └── contact/          # Contact forms
+└── layouts/               # Page layouts and templates
+```
+
+### **File Naming Conventions**
+- **Components**: PascalCase (e.g., `HeroSection.tsx`, `ServiceCard.tsx`)
+- **Directories**: kebab-case (e.g., `hero-sections/`, `service-showcase/`)
+- **Utilities**: camelCase (e.g., `formatDate.ts`, `useLocalStorage.ts`)
+- **Constants**: UPPER_SNAKE_CASE (e.g., `API_ENDPOINTS.ts`, `BRAND_COLORS.ts`)
+
+## 🎨 **Design System Rules**
+
+### **Color Palette (STRICT)**
+```typescript
+// ✅ PRIMARY COLORS - Use these for main components
+const PRIMARY_COLORS = {
+  white: '#FFFFFF',        // Primary backgrounds
+  black: '#000000',        // Primary text
+  gray: {
+    50: '#F8F9FA',        // Subtle backgrounds
+    100: '#E9ECEF',       // Light borders
+    200: '#DEE2E6',       // Medium borders
+    300: '#CED4DA',       // Dark borders
+    400: '#ADB5BD',       // Secondary text
+    500: '#6C757D',       // Muted text
+    600: '#495057',       // Strong text
+    700: '#343A40',       // Headings
+    800: '#212529',       // Dark text
+  }
+}
+
+// ✅ BRAND COLORS - Use ONLY for CTAs and accents
+const BRAND_COLORS = {
+  sonntagBlue: '#1e3a8a',  // Primary CTA buttons
+  sonntagGold: '#f59e0b',  // Secondary CTAs
+}
+
+// ❌ AVOID - Don't use these in main components
+// - Any other colors
+// - Opacity variations beyond 0.1, 0.2, 0.5, 0.8
+```
+
+### **Component Adaptation Rules**
+1. **Preserve Original Structure**: Keep HTML structure and Tailwind classes exactly as downloaded
+2. **Color Substitution Only**: Replace colors with white/black variants
+3. **Typography**: Maintain original font weights, sizes, and line heights
+4. **Spacing**: Keep original spacing, padding, margins, and layout proportions
+5. **Interactions**: Preserve hover states, transitions, and animations
+6. **Accessibility**: Maintain ARIA labels and semantic structure
+
+### **Tailwind Class Patterns**
+```typescript
+// ✅ GOOD - Clean, consistent patterns
+className="bg-white text-black border-gray-200"
+className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+className="text-4xl font-bold tracking-tight text-gray-900"
+
+// ❌ BAD - Avoid these patterns
+className="bg-sonntag-blue text-white"           // Brand colors in main components
+className="custom-container custom-spacing"      // Custom classes
+className="bg-[#custom-color]"                  // Custom hex values
+```
+
+## 📝 **Code Standards**
+
+### **Component Structure**
+```typescript
+// ✅ GOOD - Clean, organized component structure
+'use client'
+
+import { useState } from 'react'
+import { Button } from '@/components/ui/atoms/Button'
+import { Card } from '@/components/ui/molecules/Card'
+
+interface HeroSectionProps {
+  title: string
+  subtitle?: string
+  ctaText: string
+  onCtaClick: () => void
+}
+
+export function HeroSection({ 
+  title, 
+  subtitle, 
+  ctaText, 
+  onCtaClick 
+}: HeroSectionProps) {
+  return (
+    <section className="bg-white py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">
+            {title}
+          </h1>
+          {subtitle && (
+            <p className="mt-6 text-lg text-gray-600">
+              {subtitle}
+            </p>
+          )}
+          <Button 
+            onClick={onCtaClick}
+            className="mt-8 bg-black text-white hover:bg-gray-800"
+          >
+            {ctaText}
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
+```
+
+### **Import Organization**
+```typescript
+// 1. React and Next.js imports
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
+// 2. Third-party libraries
+import { motion } from 'framer-motion'
+import { Icon } from '@iconify/react'
+
+// 3. Internal components (absolute imports)
+import { Button } from '@/components/ui/atoms/Button'
+import { Card } from '@/components/ui/molecules/Card'
+
+// 4. Internal utilities and types
+import { formatDate } from '@/lib/utils'
+import type { User } from '@/types/user'
+
+// 5. Relative imports (same directory)
+import './HeroSection.css'
+```
+
+### **TypeScript Rules**
+```typescript
+// ✅ GOOD - Strict typing
+interface ServiceCardProps {
+  title: string
+  description: string
+  icon: React.ComponentType<{ className?: string }>
+  href: string
+  isHighlighted?: boolean
+}
+
+// ❌ BAD - Avoid any types
+const handleClick = (data: any) => { ... }  // Use proper types
+const [items, setItems] = useState([])      // Specify array type
+```
+
+## 🚫 **Anti-Patterns to Avoid**
+
+### **Design Anti-Patterns**
+- ❌ Using brand colors in main component backgrounds
+- ❌ Changing component spacing or layout proportions
+- ❌ Adding custom CSS that overrides Tailwind utilities
+- ❌ Modifying component structure beyond color changes
+- ❌ Using opacity values beyond standard Tailwind scale
+
+### **Code Anti-Patterns**
+- ❌ Creating components without proper TypeScript interfaces
+- ❌ Using inline styles instead of Tailwind classes
+- ❌ Mixing different naming conventions
+- ❌ Creating deeply nested component hierarchies
+- ❌ Using any types or avoiding proper typing
+
+## 📱 **Responsive Design Rules**
+
+### **Breakpoint Usage**
+```typescript
+// ✅ GOOD - Consistent breakpoint usage
+className="px-4 sm:px-6 lg:px-8"
+className="text-2xl sm:text-3xl lg:text-4xl"
+className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+
+// ❌ BAD - Inconsistent or custom breakpoints
+className="px-4 md:px-8 xl:px-12"           // Mixing custom breakpoints
+className="text-2xl lg:text-4xl"            // Skipping sm: breakpoint
+```
+
+### **Mobile-First Approach**
+- Always start with mobile styles
+- Use `sm:`, `md:`, `lg:`, `xl:` for progressive enhancement
+- Test on mobile devices first
+
+## ♿ **Accessibility Requirements**
+
+### **Semantic HTML**
+- Use proper heading hierarchy (h1, h2, h3, etc.)
+- Include alt text for all images
+- Use semantic elements (section, article, aside, etc.)
+- Maintain proper ARIA labels and roles
+
+### **Color Contrast**
+- Ensure minimum 4.5:1 contrast ratio for normal text
+- Ensure minimum 3:1 contrast ratio for large text
+- Test with color blindness simulators
+
+## 🔧 **Performance Guidelines**
+
+### **Component Optimization**
+- Use React.memo for expensive components
+- Implement proper loading states
+- Optimize images with Next.js Image component
+- Use dynamic imports for code splitting
+
+### **Bundle Optimization**
+- Avoid importing entire libraries when only specific functions are needed
+- Use tree-shaking friendly imports
+- Implement proper lazy loading for routes
+
+## 📚 **Documentation Requirements**
+
+### **Component Documentation**
+```typescript
+/**
+ * Hero Section Component
+ * 
+ * A clean, centered hero section with title, subtitle, and CTA button.
+ * Maintains original Tailwind CSS Plus design with white/black theme.
+ * 
+ * @param title - Main heading text
+ * @param subtitle - Optional subtitle text
+ * @param ctaText - Call-to-action button text
+ * @param onCtaClick - CTA button click handler
+ * 
+ * @example
+ * <HeroSection
+ *   title="Welcome to SONNTAG AG"
+ *   subtitle="Leading M&A Advisory in Gießen"
+ *   ctaText="Learn More"
+ *   onCtaClick={() => router.push('/services')}
+ * />
+ */
+```
+
+## 🧪 **Testing Guidelines**
+
+### **Component Testing**
+- Test all interactive elements
+- Verify responsive behavior across breakpoints
+- Ensure accessibility compliance
+- Test with different content lengths
+
+### **Visual Testing**
+- Compare with original Tailwind CSS Plus designs
+- Verify white/black theme consistency
+- Check for proper contrast ratios
+- Test on different devices and browsers
+
+## 📋 **Implementation Checklist**
+
+Before committing any component:
+- [ ] Follows naming conventions
+- [ ] Uses correct color palette
+- [ ] Maintains original structure
+- [ ] Includes proper TypeScript types
+- [ ] Has responsive design
+- [ ] Meets accessibility standards
+- [ ] Includes proper documentation
+- [ ] Follows import organization
+- [ ] No custom CSS overrides
+- [ ] Preserves Tailwind utility patterns
+
+## 🎯 **Priority Implementation Order**
+
+1. **Base UI Components** (atoms, molecules)
+2. **Feature Components** (hero, services, about)
+3. **Page Layouts** (home, services, about, contact)
+4. **Interactive Elements** (forms, navigation)
+5. **Advanced Features** (animations, transitions)
+
+---
+
+*These rules ensure consistent, clean, and maintainable code while preserving the original Tailwind CSS Plus design quality.*
