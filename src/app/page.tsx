@@ -6,6 +6,7 @@ import { ShaderAnimation } from '@/components/ui/shader-animation'
 import { ShaderLinesAnimation } from '@/components/ui/shader-lines'
 import { AnonymousBiddingAnimation } from '@/components/ui/anonymous-bidding-animation'
 import TeamWithBioAdapted from '@/components/ui-blocks/adapted/team-with-bio-adapted'
+import FullscreenStatement from '@/components/ui-blocks/adapted/fullscreen-statement'
 import { leadershipTeam } from '@/lib/team-data'
 
 export const metadata: Metadata = {
@@ -176,11 +177,11 @@ export default function HomePage() {
         <div className="relative z-10 flex items-center justify-center min-h-screen">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
             <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl drop-shadow-lg">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white tracking-tight leading-[1.1] drop-shadow-lg">
                 Wir verkaufen keine Unternehmen.
-                <span className="block text-white/90 mt-4">Wir sichern Lebenswerke.</span>
+                <span className="block text-white/95 mt-4 font-light">Wir sichern Lebenswerke.</span>
               </h1>
-              <p className="mt-8 text-lg sm:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+              <p className="mt-10 text-lg sm:text-xl text-white/85 max-w-3xl mx-auto leading-[1.7] font-light drop-shadow-md">
                 Mit über 500 erfolgreichen Unternehmensverkäufen und unserem einzigartigen 
                 anonymen Bieterverfahren sind wir Ihr vertrauensvoller Partner für die 
                 Unternehmensnachfolge im deutschen Mittelstand.
@@ -190,14 +191,14 @@ export default function HomePage() {
               <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/notverkauf-unternehmen-giessen"
-                  className="inline-flex items-center px-8 py-4 border border-transparent text-base sm:text-lg font-semibold rounded-lg text-black bg-white hover:bg-gray-100 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
+                  className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-black bg-white hover:bg-gray-100 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
                 >
                   Dringend verkaufen?
                   <ChevronRightIcon className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
                   href="/kontakt"
-                  className="inline-flex items-center px-8 py-4 border-2 border-white text-base sm:text-lg font-semibold rounded-lg text-white bg-transparent hover:bg-white/10 transition-all duration-200 transform hover:-translate-y-0.5 backdrop-blur-sm"
+                  className="inline-flex items-center px-8 py-4 border-2 border-white text-base font-medium rounded-lg text-white bg-transparent hover:bg-white/10 transition-all duration-200 transform hover:-translate-y-0.5 backdrop-blur-sm"
                 >
                   Kostenlose Erstberatung
                 </Link>
@@ -212,18 +213,19 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">Unsere Bilanz</h2>
+              <p className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900">
                 Vertrauen durch Erfahrung
-              </h2>
-              <p className="mt-4 text-lg text-gray-600">
+              </p>
+              <p className="mt-4 text-lg text-gray-600 font-light">
                 Zahlen, die für sich sprechen
               </p>
             </div>
             <dl className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col group">
-                  <dt className="text-base leading-7 text-gray-500 transition-colors duration-200 group-hover:text-gray-700">{stat.label}</dt>
-                  <dd className="mt-2 text-3xl font-bold leading-9 tracking-tight text-gray-900 sm:text-4xl transition-all duration-300 group-hover:scale-110 transform">
+                  <dt className="text-sm font-medium uppercase tracking-wide text-gray-500 transition-colors duration-200 group-hover:text-gray-700">{stat.label}</dt>
+                  <dd className="mt-3 text-4xl font-light leading-none tracking-tight text-gray-900 sm:text-5xl transition-all duration-300 group-hover:scale-105 transform tabular-nums">
                     {stat.value}
                   </dd>
                 </div>
@@ -239,22 +241,22 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-12 lg:gap-16 lg:grid-cols-2 lg:items-center">
             <div className="lg:pr-8">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
-                <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Unser Erfolgsgeheimnis</h2>
-                <p className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+                <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Unser Erfolgsgeheimnis</h2>
+                <p className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
                   Das anonyme Bieterverfahren
                 </p>
-                <p className="mt-6 text-lg/8 text-gray-600">
+                <p className="mt-6 text-lg text-gray-600 leading-[1.7] font-light">
                   Unser revolutionäres MARKTWERT-Verfahren wurde speziell für den deutschen Mittelstand entwickelt 
                   und garantiert Ihnen den bestmöglichen Verkaufspreis bei vollständiger Diskretion.
                 </p>
                 <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
                   {bieterverfahrenFeatures.map((feature) => (
                     <div key={feature.name} className="relative pl-9 transition-all duration-200 hover:translate-x-2">
-                      <dt className="inline font-semibold text-black">
+                      <dt className="inline font-medium text-gray-900">
                         <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-gray-400 transition-colors duration-200 group-hover:text-gray-600" />
                         {feature.name}
                       </dt>{' '}
-                      <dd className="inline">{feature.description}</dd>
+                      <dd className="inline text-gray-600">{feature.description}</dd>
                     </div>
                   ))}
                 </dl>
@@ -307,11 +309,11 @@ export default function HomePage() {
             </div>
             <div className="order-1 lg:order-2 lg:pl-8">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
-                <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Maximale Wertsteigerung</h2>
-                <p className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+                <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Maximale Wertsteigerung</h2>
+                <p className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
                   Ihr Unternehmenswert optimal gesteigert
                 </p>
-                <p className="mt-6 text-lg/8 text-gray-600">
+                <p className="mt-6 text-lg text-gray-600 leading-[1.7] font-light">
                   Mit unserem MEHRWERT-Programm steigern wir systematisch den Wert Ihres Unternehmens 
                   vor dem Verkauf. Durchschnittlich erzielen unsere Kunden 35% höhere Verkaufspreise.
                 </p>
@@ -324,8 +326,8 @@ export default function HomePage() {
                         </div>
                       </div>
                       <div className="ml-4">
-                        <h3 className="text-base font-semibold text-black">Analyse & Potenzialermittlung</h3>
-                        <p className="mt-2 text-sm text-gray-600">
+                        <h3 className="text-base font-medium text-gray-900">Analyse & Potenzialermittlung</h3>
+                        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
                           Wir identifizieren versteckte Werttreiber und ungenutzte Potenziale in Ihrem Unternehmen.
                         </p>
                       </div>
@@ -339,8 +341,8 @@ export default function HomePage() {
                         </div>
                       </div>
                       <div className="ml-4">
-                        <h3 className="text-base font-semibold text-black">Strategische Optimierung</h3>
-                        <p className="mt-2 text-sm text-gray-600">
+                        <h3 className="text-base font-medium text-gray-900">Strategische Optimierung</h3>
+                        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
                           Prozesse digitalisieren, Kosten senken, Margen erhöhen – alles für den maximalen Verkaufspreis.
                         </p>
                       </div>
@@ -354,8 +356,8 @@ export default function HomePage() {
                         </div>
                       </div>
                       <div className="ml-4">
-                        <h3 className="text-base font-semibold text-black">Messbare Ergebnisse</h3>
-                        <p className="mt-2 text-sm text-gray-600">
+                        <h3 className="text-base font-medium text-gray-900">Messbare Ergebnisse</h3>
+                        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
                           Im Durchschnitt 35% höhere Verkaufspreise durch gezielte Wertsteigerungsmaßnahmen.
                         </p>
                       </div>
@@ -377,6 +379,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Fullscreen Statement 1: Trust & Legacy */}
+      <FullscreenStatement
+        headline="Ihr Lebenswerk verdient mehr als nur einen Käufer."
+        subtext="Es verdient die richtige Zukunft."
+        videoSrc="/frankfurt-timelapse.mp4"
+        darkOverlay={true}
+        textColor="white"
+      />
+
       {/* Bento Grid Services Section */}
       <section className="relative bg-gray-900 py-16 sm:py-20 lg:py-24 overflow-hidden">
         {/* Shader Lines Background */}
@@ -386,8 +397,8 @@ export default function HomePage() {
         
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Unsere Expertise</h2>
-            <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Unsere Expertise</h2>
+            <p className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-[1.1]">
               Alles für Ihre erfolgreiche Unternehmensnachfolge
             </p>
           </div>
@@ -400,7 +411,7 @@ export default function HomePage() {
                   <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
                     Anonymes Bieterverfahren
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-300 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm text-gray-300 max-lg:text-center leading-relaxed">
                     Maximaler Verkaufspreis durch echten Wettbewerb. 100% diskret, mehrere Bieter gleichzeitig.
                   </p>
                 </div>
@@ -418,7 +429,7 @@ export default function HomePage() {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-white">100% Anonymität</p>
-                        <p className="text-xs text-gray-400 mt-0.5">Ihre Identität bleibt bis zum Abschluss geschützt</p>
+                        <p className="text-xs text-gray-400 mt-0.5 font-light">Ihre Identität bleibt bis zum Abschluss geschützt</p>
                       </div>
                     </div>
                     
@@ -428,7 +439,7 @@ export default function HomePage() {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-white">Echter Wettbewerb</p>
-                        <p className="text-xs text-gray-400 mt-0.5">3-5 qualifizierte Käufer bieten gleichzeitig</p>
+                        <p className="text-xs text-gray-400 mt-0.5 font-light">3-5 qualifizierte Käufer bieten gleichzeitig</p>
                       </div>
                     </div>
                     
@@ -438,7 +449,7 @@ export default function HomePage() {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-white">Maximaler Erlös</p>
-                        <p className="text-xs text-gray-400 mt-0.5">Durchschnittlich 35% höhere Verkaufspreise</p>
+                        <p className="text-xs text-gray-400 mt-0.5 font-light">Durchschnittlich 35% höhere Verkaufspreise</p>
                       </div>
                     </div>
                   </div>
@@ -465,14 +476,14 @@ export default function HomePage() {
                   <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
                     Wertsteigerung
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-300 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm text-gray-300 max-lg:text-center leading-relaxed">
                     Steigern Sie Ihren Unternehmenswert vor dem Verkauf um 20-40%.
                   </p>
                 </div>
                 <div className="flex flex-1 items-center justify-center px-6 py-6 sm:px-8">
                   <div className="text-center">
-                    <p className="text-5xl font-bold text-white">+35%</p>
-                    <p className="mt-2 text-sm text-gray-300">Durchschnittliche Wertsteigerung</p>
+                    <p className="text-5xl font-light text-white tabular-nums">+35%</p>
+                    <p className="mt-2 text-sm text-gray-300 font-light">Durchschnittliche Wertsteigerung</p>
                   </div>
                 </div>
               </div>
@@ -486,19 +497,19 @@ export default function HomePage() {
                   <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
                     Digitalisierung
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-300 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm text-gray-300 max-lg:text-center leading-relaxed">
                     Digitale Transformation für höhere Bewertungen.
                   </p>
                 </div>
                 <div className="flex flex-1 items-center justify-center px-6 py-6 sm:px-8">
                   <div className="flex space-x-8">
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-white">2x</p>
-                      <p className="text-xs text-gray-300">Effizienzsteigerung</p>
+                      <p className="text-2xl font-light text-white tabular-nums">2x</p>
+                      <p className="text-xs text-gray-300 font-light">Effizienzsteigerung</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-white">50%</p>
-                      <p className="text-xs text-gray-300">Kostenreduktion</p>
+                      <p className="text-2xl font-light text-white tabular-nums">50%</p>
+                      <p className="text-xs text-gray-300 font-light">Kostenreduktion</p>
                     </div>
                   </div>
                 </div>
@@ -513,15 +524,15 @@ export default function HomePage() {
                   <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
                     M&A Beratung
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-300 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm text-gray-300 max-lg:text-center leading-relaxed">
                     Professionelle Begleitung von der Strategie bis zum Abschluss.
                   </p>
                 </div>
                 <div className="flex flex-1 items-center justify-center px-6 py-6 sm:px-8">
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-white">500+</p>
-                    <p className="mt-2 text-sm text-gray-300">Erfolgreiche Deals</p>
-                    <p className="text-xs text-gray-400 mt-1">25+ Jahre Erfahrung</p>
+                    <p className="text-3xl font-light text-white tabular-nums">500+</p>
+                    <p className="mt-2 text-sm text-gray-300 font-light">Erfolgreiche Deals</p>
+                    <p className="text-xs text-gray-400 mt-1 font-light">25+ Jahre Erfahrung</p>
                   </div>
                 </div>
                 <div className="px-6 pb-6 sm:px-8 sm:pb-8">
@@ -544,15 +555,15 @@ export default function HomePage() {
                   <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
                     Unternehmensbewertung
                   </p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-300 max-lg:text-center">
+                  <p className="mt-2 max-w-lg text-sm text-gray-300 max-lg:text-center leading-relaxed">
                     Professionelle Bewertung nach internationalen Standards.
                   </p>
                 </div>
                 <div className="flex flex-1 items-center justify-center px-6 py-6 sm:px-8">
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-white">100%</p>
-                    <p className="mt-2 text-sm text-gray-300">Transparenz</p>
-                    <p className="text-xs text-gray-400 mt-1">IFRS & IDW konform</p>
+                    <p className="text-3xl font-light text-white tabular-nums">100%</p>
+                    <p className="mt-2 text-sm text-gray-300 font-light">Transparenz</p>
+                    <p className="text-xs text-gray-400 mt-1 font-light">IFRS & IDW konform</p>
                   </div>
                 </div>
                 <div className="px-6 pb-6 sm:px-8 sm:pb-8">
@@ -575,11 +586,11 @@ export default function HomePage() {
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Aktuelle Erfolge</h2>
-            <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Aktuelle Erfolge</h2>
+            <p className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 mb-4 leading-[1.1]">
               Unsere jüngsten Transaktionen
             </p>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 font-light">
               Diskret, schnell und erfolgreich – so arbeiten wir.
             </p>
           </div>
@@ -593,10 +604,10 @@ export default function HomePage() {
                     Erfolgreich
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold text-black mb-2">
+                <h3 className="text-lg font-medium text-gray-900 mb-2">
                   {transaction.company}
                 </h3>
-                <p className="text-sm text-gray-600 mb-3">
+                <p className="text-sm text-gray-600 mb-3 font-light">
                   Käufer: {transaction.buyer}
                 </p>
                 <div className="flex items-center text-sm text-gray-500">
@@ -618,6 +629,15 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Fullscreen Statement 2: Human Connection */}
+      <FullscreenStatement
+        headline="Hinter jedem Verkauf steht eine persönliche Geschichte."
+        subtext="Wir schreiben sie mit Ihnen zu Ende."
+        videoSrc="/giessen-construction-aerial.mp4"
+        darkOverlay={true}
+        textColor="white"
+      />
 
       {/* Team Section */}
       <section className="bg-white">
@@ -644,10 +664,10 @@ export default function HomePage() {
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl">
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
               Aus unserem Expertenblog
             </h2>
-            <p className="mt-2 text-lg/8 text-gray-600">
+            <p className="mt-3 text-lg text-gray-600 font-light">
               Einblicke, Tipps und Strategien für erfolgreiche Unternehmensnachfolge.
             </p>
           </div>
@@ -666,13 +686,13 @@ export default function HomePage() {
                   </a>
                 </div>
                 <div className="group relative grow">
-                  <h3 className="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
+                  <h3 className="mt-3 text-lg font-medium text-gray-900 group-hover:text-gray-600 leading-snug">
                     <a href={post.href}>
                       <span className="absolute inset-0" />
                       {post.title}
                     </a>
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-sm/6 text-gray-600">{post.description}</p>
+                  <p className="mt-5 line-clamp-3 text-sm text-gray-600 leading-relaxed">{post.description}</p>
                 </div>
                 <div className="relative mt-8 flex items-center gap-x-4 justify-self-end">
                   <div className="size-10 rounded-full bg-gray-200 flex items-center justify-center">

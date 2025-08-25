@@ -17,19 +17,31 @@ module.exports = {
         'serif': ['Georgia', 'serif'],
       },
       fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1rem' }],
-        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
-        'base': ['1rem', { lineHeight: '1.5rem' }],
-        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
-        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
-        '2xl': ['1.5rem', { lineHeight: '2rem' }],
-        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-        '5xl': ['3rem', { lineHeight: '1' }],
-        '6xl': ['3.75rem', { lineHeight: '1' }],
-        '7xl': ['4.5rem', { lineHeight: '1' }],
-        '8xl': ['6rem', { lineHeight: '1' }],
-        '9xl': ['8rem', { lineHeight: '1' }],
+        // Base sizes with refined line heights
+        'xs': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.01em' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.005em' }],
+        'base': ['1rem', { lineHeight: '1.75rem', letterSpacing: '0' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem', letterSpacing: '-0.005em' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem', letterSpacing: '-0.01em' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.015em' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem', letterSpacing: '-0.02em' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.025em' }],
+        '5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+        '6xl': ['3.75rem', { lineHeight: '1.05', letterSpacing: '-0.035em' }],
+        '7xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.04em' }],
+        '8xl': ['6rem', { lineHeight: '0.95', letterSpacing: '-0.045em' }],
+        '9xl': ['8rem', { lineHeight: '0.9', letterSpacing: '-0.05em' }],
+        // Modular scale based on Major Third (1.25)
+        'scale-xs': ['0.64rem', { lineHeight: '1.5' }],      // 10px
+        'scale-sm': ['0.8rem', { lineHeight: '1.5' }],       // 13px
+        'scale-base': ['1rem', { lineHeight: '1.75' }],      // 16px
+        'scale-md': ['1.25rem', { lineHeight: '1.6' }],      // 20px
+        'scale-lg': ['1.563rem', { lineHeight: '1.5' }],     // 25px
+        'scale-xl': ['1.953rem', { lineHeight: '1.4' }],     // 31px
+        'scale-2xl': ['2.441rem', { lineHeight: '1.3' }],    // 39px
+        'scale-3xl': ['3.052rem', { lineHeight: '1.2' }],    // 49px
+        'scale-4xl': ['3.815rem', { lineHeight: '1.1' }],    // 61px
+        'scale-5xl': ['4.768rem', { lineHeight: '1.05' }],   // 76px
       },
       spacing: {
         '18': '4.5rem',
