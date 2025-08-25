@@ -5,6 +5,8 @@ import { EyeSlashIcon, UserGroupIcon, ChartBarIcon } from '@heroicons/react/20/s
 import { ShaderAnimation } from '@/components/ui/shader-animation'
 import { ShaderLinesAnimation } from '@/components/ui/shader-lines'
 import { AnonymousBiddingAnimation } from '@/components/ui/anonymous-bidding-animation'
+import TeamWithBioAdapted from '@/components/ui-blocks/adapted/team-with-bio-adapted'
+import { leadershipTeam } from '@/lib/team-data'
 
 export const metadata: Metadata = {
   title: 'SONNTAG AG - Unternehmensnachfolge & M&A Beratung Gießen',
@@ -286,7 +288,7 @@ export default function HomePage() {
       </section>
 
       {/* Wertmaximierung Section - Video Left */}
-      <section className="overflow-hidden bg-gray-50 py-16 sm:py-20 lg:py-24">
+      <section className="overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:gap-16 lg:grid-cols-2 lg:items-center">
             <div className="flex items-center justify-center order-2 lg:order-1">
@@ -618,41 +620,15 @@ export default function HomePage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Ihre Experten</h2>
-            <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-              Doppelte Spitze für Ihren Erfolg
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="w-48 h-48 sm:w-56 sm:h-56 mx-auto bg-white border-2 border-gray-200 rounded-full flex items-center justify-center mb-6 transition-all duration-200 hover:shadow-xl">
-                <span className="text-3xl sm:text-4xl font-bold text-gray-600">TS</span>
-              </div>
-              <h3 className="text-2xl font-bold text-black">Thomas Sonntag</h3>
-              <p className="text-sm text-gray-600 mb-2">Vorstand MARKTWERT</p>
-              <p className="text-gray-600">
-                25 Jahre Erfahrung im Unternehmensverkauf. 
-                Entwickler des anonymen Bieterverfahrens.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-48 h-48 sm:w-56 sm:h-56 mx-auto bg-white border-2 border-gray-200 rounded-full flex items-center justify-center mb-6 transition-all duration-200 hover:shadow-xl">
-                <span className="text-3xl sm:text-4xl font-bold text-gray-600">BH</span>
-              </div>
-              <h3 className="text-2xl font-bold text-black">Prof. Dr. Bastian Heinemann</h3>
-              <p className="text-sm text-gray-600 mb-2">Vorstand MEHRWERT</p>
-              <p className="text-gray-600">
-                14 Jahre Expertise in Wertsteigerung. 
-                Professor für Betriebswirtschaftslehre.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12 text-center">
+      <section className="bg-white">
+        <TeamWithBioAdapted 
+          title="Doppelte Spitze für Ihren Erfolg"
+          subtitle="Bei der Sonntag AG kombinieren wir 25 Jahre Erfahrung im Unternehmensverkauf mit 14 Jahren Expertise in der operativen Wertsteigerung."
+          members={leadershipTeam}
+          showSocial={false}
+        />
+        <div className="pb-16 sm:pb-20 lg:pb-24">
+          <div className="text-center">
             <Link
               href="/team"
               className="inline-flex items-center text-base font-medium text-black hover:text-gray-700 transition-all duration-200 hover:translate-x-2"

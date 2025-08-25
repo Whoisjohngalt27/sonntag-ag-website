@@ -1,4 +1,8 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ChevronRightIcon } from '@heroicons/react/24/outline'
+import TeamWithBioAdapted from '@/components/ui-blocks/adapted/team-with-bio-adapted'
+import { teamMembers } from '@/lib/team-data'
 
 export const metadata: Metadata = {
   title: 'Unser Team | SONNTAG AG - M&A Beratung Gießen',
@@ -12,72 +16,6 @@ export const metadata: Metadata = {
   ]
 }
 
-const teamMembers = [
-  {
-    name: 'Thomas Sonntag',
-    role: 'Geschäftsführer MARKTWERT',
-    image: '/team/thomas-sonntag.jpg',
-    bio: 'Gründer und Geschäftsführer der Sonntag AG. Mit über 25 Jahren Erfahrung im Bereich der Unternehmensnachfolge hat er sich als Experte für den deutschen Mittelstand etabliert. Entwickler des anonymen Bieterverfahrens mit über 500 erfolgreichen Transaktionen.',
-    expertise: ['Anonymes Bieterverfahren', 'Unternehmensverkauf und -bewertung', 'Marktanalyse und -strategie', 'Verhandlungsführung'],
-    experience: '25+ Jahre'
-  },
-  {
-    name: 'Prof. Dr. Bastian Heinemann',
-    role: 'Geschäftsführer MEHRWERT',
-    image: '/team/bastian-heinemann.jpg',
-    bio: 'Leitet den Geschäftsbereich MEHRWERT und bringt 14 Jahre Erfahrung in der operativen Wertsteigerung von Unternehmen mit. Professor für Betriebswirtschaftslehre, Equity Partner einer Unternehmensberatung und mehrere Aufsichtsratsmandate.',
-    expertise: ['Operative Wertsteigerung', 'Prozessoptimierung', 'Organisationsentwicklung', 'Change Management'],
-    experience: '14+ Jahre'
-  },
-  {
-    name: 'Hannes Sauter',
-    role: 'Senior M&A Berater',
-    image: '/team/hannes-sauter.jpg',
-    bio: 'Experte für komplexe Unternehmensverkäufe und strategische Beratung. Spezialisiert auf mittelständische Transaktionen mit Fokus auf nachhaltige Lösungen.',
-    expertise: ['Komplexe Transaktionen', 'Strategische Beratung', 'Mittelstand M&A', 'Due Diligence'],
-    experience: '12+ Jahre'
-  },
-  {
-    name: 'Lars Michels',
-    role: 'Wertsteigerungsspezialist',
-    image: '/team/lars-michels.jpg',
-    bio: 'Fokus auf operative Verbesserungen und Prozessoptimierung. Unterstützt Unternehmen bei der Wertsteigerung vor dem Verkauf.',
-    expertise: ['Operative Verbesserungen', 'Prozessoptimierung', 'Lean Management', 'Digitalisierung'],
-    experience: '10+ Jahre'
-  },
-  {
-    name: 'Matthias Ranft',
-    role: 'Marktanalyst',
-    image: '/team/matthias-ranft.jpg',
-    bio: 'Spezialist für Marktbewertung und strategische Positionierung. Analysiert Markttrends und identifiziert optimale Verkaufszeitpunkte.',
-    expertise: ['Marktbewertung', 'Strategische Positionierung', 'Branchenanalyse', 'Bewertungsmodelle'],
-    experience: '8+ Jahre'
-  },
-  {
-    name: 'Quirin Eder',
-    role: 'Rechtsberater',
-    image: '/team/quirin-eder.jpg',
-    bio: 'Experte für rechtliche Aspekte der Unternehmensnachfolge. Gewährleistet rechtssichere Verträge und Transaktionsabwicklung.',
-    expertise: ['Unternehmensrecht', 'Vertragsgestaltung', 'M&A Recht', 'Due Diligence Legal'],
-    experience: '15+ Jahre'
-  },
-  {
-    name: 'Denis Ceylan',
-    role: 'Finanzanalyst',
-    image: '/team/denis-ceylan.jpg',
-    bio: 'Spezialist für Finanzbewertung und Due Diligence. Entwickelt Bewertungsmodelle und analysiert Finanzstrukturen.',
-    expertise: ['Finanzbewertung', 'Due Diligence Financial', 'Bewertungsmodelle', 'Finanzstrukturanalyse'],
-    experience: '9+ Jahre'
-  },
-  {
-    name: 'Masoume Bron',
-    role: 'Projektmanagerin',
-    image: '/team/masoume-bron.jpg',
-    bio: 'Verantwortlich für die Koordination komplexer Transaktionen. Sorgt für reibungslose Abläufe und termingerechte Umsetzung.',
-    expertise: ['Projektmanagement', 'Transaktionskoordination', 'Prozesssteuerung', 'Stakeholder Management'],
-    experience: '7+ Jahre'
-  }
-]
 
 export default function TeamPage() {
   return (
@@ -98,58 +36,12 @@ export default function TeamPage() {
       </section>
 
       {/* Team Overview */}
-      <section className="py-24 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-black sm:text-4xl">
-              Unsere Führungskräfte
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Bei der Sonntag AG kombinieren wir 25 Jahre Erfahrung im Unternehmensverkauf 
-              mit 14 Jahren Expertise in der operativen Wertsteigerung.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member) => (
-              <div key={member.name} className="bg-white rounded-lg shadow-sm overflow-hidden">
-                <div className="aspect-w-3 aspect-h-4 bg-gray-200">
-                  <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
-                    <div className="w-24 h-24 bg-gray-300 rounded-full flex items-center justify-center">
-                      <svg className="w-12 h-12 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-black mb-2">{member.name}</h3>
-                  <p className="text-gray-600 mb-3">{member.role}</p>
-                  <p className="text-sm text-gray-600 mb-4">{member.bio}</p>
-                  
-                  <div className="mb-4">
-                    <span className="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full mb-2">
-                      {member.experience} Erfahrung
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-800">Expertise:</h4>
-                    <ul className="text-xs text-gray-600 space-y-1">
-                      {member.expertise.map((skill) => (
-                        <li key={skill} className="flex items-center">
-                          <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></span>
-                          {skill}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TeamWithBioAdapted 
+        title="Unsere Experten"
+        subtitle="Bei der Sonntag AG kombinieren wir 25 Jahre Erfahrung im Unternehmensverkauf mit 14 Jahren Expertise in der operativen Wertsteigerung. Unser Team aus erfahrenen Experten arbeitet Hand in Hand für Ihren erfolgreichen Unternehmensverkauf."
+        members={teamMembers}
+        showSocial={false}
+      />
 
       {/* Team Values */}
       <section className="py-24 bg-white">

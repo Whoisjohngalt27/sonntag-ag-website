@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
-import Navbar from '@/components/ui-blocks/navigation/Navbar';
+import NavbarWithDropdown from '@/components/ui-blocks/navigation/navbar-with-dropdown';
 import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -92,7 +92,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <Navbar />
+        <NavbarWithDropdown />
         {children}
         <Footer />
       </body>
