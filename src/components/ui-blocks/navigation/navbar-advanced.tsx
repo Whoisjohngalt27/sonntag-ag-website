@@ -4,14 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import {
   Dialog,
-  DialogPanel,
   Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
   Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
 } from '@headlessui/react'
 import {
   Bars3Icon,
@@ -87,20 +81,19 @@ export default function NavbarAdvanced() {
           </button>
         </div>
         
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+        <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link href="/" className="text-sm font-semibold text-gray-700 hover:text-black transition-colors">
             Home
           </Link>
           
           <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold text-gray-700 hover:text-black transition-colors">
+            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold text-gray-700 hover:text-black transition-colors">
               Leistungen
               <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
-            </PopoverButton>
+            </Popover.Button>
 
-            <PopoverPanel
-              transition
-              className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
+            <Popover.Panel
+              className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5"
             >
               <div className="p-4">
                 {leistungen.map((item) => (
@@ -133,7 +126,7 @@ export default function NavbarAdvanced() {
                   </Link>
                 ))}
               </div>
-            </PopoverPanel>
+            </Popover.Panel>
           </Popover>
 
           <Link href="/transaktionen" className="text-sm font-semibold text-gray-700 hover:text-black transition-colors">
@@ -141,14 +134,13 @@ export default function NavbarAdvanced() {
           </Link>
 
           <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold text-gray-700 hover:text-black transition-colors">
+            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold text-gray-700 hover:text-black transition-colors">
               Unternehmen
               <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
-            </PopoverButton>
+            </Popover.Button>
 
-            <PopoverPanel
-              transition
-              className="absolute left-1/2 z-10 mt-3 w-56 -translate-x-1/2 rounded-xl bg-white p-2 shadow-lg ring-1 ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
+            <Popover.Panel
+              className="absolute left-1/2 z-10 mt-3 w-56 -translate-x-1/2 rounded-xl bg-white p-2 shadow-lg ring-1 ring-gray-900/5"
             >
               {unternehmen.map((item) => (
                 <Link
@@ -159,13 +151,13 @@ export default function NavbarAdvanced() {
                   {item.name}
                 </Link>
               ))}
-            </PopoverPanel>
+            </Popover.Panel>
           </Popover>
 
           <Link href="/kontakt" className="text-sm font-semibold text-gray-700 hover:text-black transition-colors">
             Kontakt
           </Link>
-        </PopoverGroup>
+        </Popover.Group>
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link 
@@ -180,7 +172,7 @@ export default function NavbarAdvanced() {
       {/* Mobile menu */}
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-50" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">SONNTAG AG</span>
@@ -213,11 +205,11 @@ export default function NavbarAdvanced() {
                 </Link>
                 
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                  <Disclosure.Button className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-gray-900 hover:bg-gray-50">
                     Leistungen
                     <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-open:rotate-180" />
-                  </DisclosureButton>
-                  <DisclosurePanel className="mt-2 space-y-2">
+                  </Disclosure.Button>
+                  <Disclosure.Panel className="mt-2 space-y-2">
                     {leistungen.map((item) => (
                       <Link
                         key={item.name}
@@ -228,7 +220,7 @@ export default function NavbarAdvanced() {
                         {item.name}
                       </Link>
                     ))}
-                  </DisclosurePanel>
+                  </Disclosure.Panel>
                 </Disclosure>
 
                 <Link
@@ -240,11 +232,11 @@ export default function NavbarAdvanced() {
                 </Link>
 
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                  <Disclosure.Button className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-gray-900 hover:bg-gray-50">
                     Unternehmen
                     <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-open:rotate-180" />
-                  </DisclosureButton>
-                  <DisclosurePanel className="mt-2 space-y-2">
+                  </Disclosure.Button>
+                  <Disclosure.Panel className="mt-2 space-y-2">
                     {unternehmen.map((item) => (
                       <Link
                         key={item.name}
@@ -255,7 +247,7 @@ export default function NavbarAdvanced() {
                         {item.name}
                       </Link>
                     ))}
-                  </DisclosurePanel>
+                  </Disclosure.Panel>
                 </Disclosure>
 
                 <Link
@@ -278,7 +270,7 @@ export default function NavbarAdvanced() {
               </div>
             </div>
           </div>
-        </DialogPanel>
+        </Dialog.Panel>
       </Dialog>
     </header>
   )
