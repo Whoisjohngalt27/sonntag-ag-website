@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import NavbarWithDropdown from '@/components/ui-blocks/navigation/navbar-with-dropdown';
 import Footer from '@/components/footer';
+import GoogleAnalytics from '@/components/google-analytics';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -92,6 +93,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${inter.className} antialiased`}>
+        <GoogleAnalytics />
         <NavbarWithDropdown />
         {children}
         <Footer />

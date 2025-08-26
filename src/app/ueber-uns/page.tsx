@@ -28,7 +28,7 @@ export default function UeberUnsPage() {
             </p>
             <div className="mt-8 bg-gray-50 p-6 rounded-lg max-w-4xl mx-auto">
               <p className="text-xl text-gray-800 font-medium italic text-center">
-                "Für den Unternehmer, der sein Lebenswerk in die richtigen Hände geben will."
+                &ldquo;Für den Unternehmer, der sein Lebenswerk in die richtigen Hände geben will.&rdquo;
               </p>
               <p className="text-center text-gray-600 mt-2">- Unser Markenmanifest -</p>
             </div>

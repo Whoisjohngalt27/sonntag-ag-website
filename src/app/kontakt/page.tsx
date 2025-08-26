@@ -1,18 +1,92 @@
-import type { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Kontakt | SONNTAG AG - M&A Beratung Gießen',
-  description: 'Kontaktieren Sie SONNTAG AG für eine kostenlose Erstberatung. Wir sind Ihr Partner für Unternehmensnachfolge und M&A Beratung in Gießen.',
-  keywords: [
-    'Kontakt SONNTAG AG',
-    'M&A Beratung Kontakt',
-    'Unternehmensnachfolge Beratung',
-    'Kostenlose Erstberatung',
-    'SONNTAG AG Gießen'
-  ]
+import { useState, FormEvent, ChangeEvent } from 'react'
+import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
+import { trackContactFormSubmission } from '@/lib/analytics'
+
+interface FormData {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  company: string
+  message: string
 }
 
 export default function KontaktPage() {
+  const [formData, setFormData] = useState<FormData>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: ''
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+    setErrorMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: 'Kontaktseite',
+          urgency: 'normal'
+        })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        
+        // Track conversion
+        trackContactFormSubmission({
+          source: 'Kontaktseite',
+          urgency: 'normal',
+          company: formData.company
+        })
+        
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: ''
+        })
+      } else {
+        setSubmitStatus('error')
+        setErrorMessage(data.error || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+      setErrorMessage('Netzwerkfehler. Bitte überprüfen Sie Ihre Internetverbindung.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -39,7 +113,7 @@ export default function KontaktPage() {
               <h2 className="text-2xl font-bold text-black mb-6">
                 Kostenlose Erstberatung
               </h2>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
@@ -49,8 +123,11 @@ export default function KontaktPage() {
                       type="text"
                       id="firstName"
                       name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                     />
                   </div>
                   <div>
@@ -61,8 +138,11 @@ export default function KontaktPage() {
                       type="text"
                       id="lastName"
                       name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
@@ -75,8 +155,11 @@ export default function KontaktPage() {
                     type="email"
                     id="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    disabled={isSubmitting}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                   />
                 </div>
                 
@@ -88,7 +171,10 @@ export default function KontaktPage() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                   />
                 </div>
                 
@@ -100,7 +186,10 @@ export default function KontaktPage() {
                     type="text"
                     id="company"
                     name="company"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                   />
                 </div>
                 
@@ -112,18 +201,62 @@ export default function KontaktPage() {
                     id="message"
                     name="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     required
+                    disabled={isSubmitting}
                     placeholder="Beschreiben Sie Ihr Anliegen..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                   ></textarea>
                 </div>
+                
+                {submitStatus === 'success' && (
+                  <div className="rounded-md bg-green-50 p-4">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm font-medium text-green-800">
+                          Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="rounded-md bg-red-50 p-4">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <ExclamationCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm font-medium text-red-800">
+                          {errorMessage}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 
                 <div>
                   <button
                     type="submit"
-                    className="w-full bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors font-medium"
+                    disabled={isSubmitting}
+                    className="w-full bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors font-medium disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center"
                   >
-                    Nachricht senden
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Wird gesendet...
+                      </>
+                    ) : (
+                      'Nachricht senden'
+                    )}
                   </button>
                 </div>
                 

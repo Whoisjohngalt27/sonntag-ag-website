@@ -92,6 +92,10 @@ export default function NavbarWithDropdown() {
             Transaktionen
           </Link>
 
+          <Link href="/unternehmensbewertung-rechner" className="text-sm font-semibold text-gray-700 hover:text-black transition-colors">
+            Firmenwert-Rechner
+          </Link>
+
           {/* Unternehmen Dropdown */}
           <div className="relative">
             <button
@@ -198,6 +202,14 @@ export default function NavbarWithDropdown() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Transaktionen
+                </Link>
+
+                <Link
+                  href="/unternehmensbewertung-rechner"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Firmenwert-Rechner
                 </Link>
 
                 <div className="-mx-3">

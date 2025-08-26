@@ -2,18 +2,11 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { 
   PhoneIcon, 
-  ClockIcon, 
-  ShieldCheckIcon, 
   CheckCircleIcon,
-  ExclamationTriangleIcon,
-  BoltIcon,
-  ChevronRightIcon,
   ArrowRightIcon,
-  UserGroupIcon,
-  ChartBarIcon,
-  BuildingOfficeIcon,
   MagnifyingGlassIcon,
-  HeartIcon
+  HeartIcon,
+  ShieldCheckIcon
 } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {

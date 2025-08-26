@@ -28,6 +28,6 @@
       "@/templates/*": ["./templates/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/ui-blocks/blocks/marketing/landing-page/landing-page"],
   "exclude": ["node_modules"]
 }
