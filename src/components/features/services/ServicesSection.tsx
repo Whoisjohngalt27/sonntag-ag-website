@@ -7,8 +7,8 @@
 import Link from 'next/link'
 import { ChevronRightIcon } from '@heroicons/react/24/outline'
 import { EyeSlashIcon, UserGroupIcon, ChartBarIcon } from '@heroicons/react/20/solid'
-import { AnonymousBiddingAnimation } from '@/components/ui/anonymous-bidding-animation'
-import { ShaderLinesAnimation } from '@/components/ui/shader-lines'
+import { AnonymousBiddingAnimation } from '@/components/ui/atoms/animations'
+import { ShaderLinesAnimation } from '@/components/ui/atoms/animations'
 import { ServicesSectionProps } from './ServicesSection.types'
 
 export function ServicesSection(props: ServicesSectionProps = {}) {

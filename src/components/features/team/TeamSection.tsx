@@ -6,9 +6,9 @@
 
 import Link from 'next/link'
 import { ChevronRightIcon } from '@heroicons/react/24/outline'
-import TeamWithBioAdapted from '@/components/ui-blocks/adapted/team-with-bio-adapted'
+import { TeamWithBioAdapted } from '@/components/features/team'
 import { TeamSectionProps } from './TeamSection.types'
-import { leadershipTeam } from '@/lib/team-data'
+import { leadershipTeam } from '@/lib/data'
 
 const defaultProps: TeamSectionProps = {
   title: 'Doppelte Spitze für Ihren Erfolg',

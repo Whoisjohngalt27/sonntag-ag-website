@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
-import NavbarWithDropdown from '@/components/ui-blocks/navigation/navbar-with-dropdown';
+import { NavbarWithDropdown } from '@/components/ui/organisms/navigation';
 import Footer from '@/components/footer';
 import GoogleAnalytics from '@/components/google-analytics';
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { TransactionsSection } from '@/components/features/transactions'
 
 export const metadata: Metadata = {
   title: 'Transaktionen | SONNTAG AG - M&A Beratung Gießen',
@@ -11,6 +12,75 @@ export const metadata: Metadata = {
     'Mittelstand Transaktionen'
   ]
 }
+
+const recentTransactions = [
+  {
+    id: 1,
+    date: 'Juni 2025',
+    company: 'Wieland & Schultz Kaisersauern GmbH',
+    buyer: 'Encevo Deutschland GmbH',
+    timeframe: '6 Wochen',
+    sector: 'manufacturing',
+    status: 'successful' as const,
+    value: '€2.5M',
+    location: 'Kaisersauern, Deutschland'
+  },
+  {
+    id: 2,
+    date: 'März 2025',
+    company: 'Becker GmbH CAD-CAM-CAST',
+    buyer: 'Windschiegl Maschinenbau GmbH',
+    timeframe: '8 Wochen',
+    sector: 'technology',
+    status: 'successful' as const,
+    value: '€1.8M',
+    location: 'München, Deutschland'
+  },
+  {
+    id: 3,
+    date: 'Januar 2025',
+    company: 'Mittelständisches Handelsunternehmen',
+    buyer: 'Strategischer Investor',
+    timeframe: '10 Wochen',
+    sector: 'retail',
+    status: 'completed' as const,
+    value: '€3.2M',
+    location: 'Hessen, Deutschland'
+  },
+  {
+    id: 4,
+    date: 'Dezember 2024',
+    company: 'Medizintechnik Solutions AG',
+    buyer: 'Healthcare Partners GmbH',
+    timeframe: '12 Wochen',
+    sector: 'healthcare',
+    status: 'successful' as const,
+    value: '€4.1M',
+    location: 'Berlin, Deutschland'
+  },
+  {
+    id: 5,
+    date: 'November 2024',
+    company: 'Bauprojekt Management KG',
+    buyer: 'Construction Group International',
+    timeframe: '9 Wochen',
+    sector: 'construction',
+    status: 'completed' as const,
+    value: '€1.9M',
+    location: 'Hamburg, Deutschland'
+  },
+  {
+    id: 6,
+    date: 'Oktober 2024',
+    company: 'Automotive Parts GmbH',
+    buyer: 'Global Auto Solutions',
+    timeframe: '7 Wochen',
+    sector: 'automotive',
+    status: 'successful' as const,
+    value: '€3.7M',
+    location: 'Stuttgart, Deutschland'
+  }
+]
 
 export default function TransaktionenPage() {
   return (
@@ -29,6 +99,17 @@ export default function TransaktionenPage() {
           </div>
         </div>
       </section>
+
+      {/* Recent Transactions with Enhanced Cards */}
+      <TransactionsSection 
+        title="Jüngste Transaktionen"
+        subtitle="Aktuelle Erfolge"
+        description="Diskret, schnell und erfolgreich – so arbeiten wir. Hier sehen Sie unsere neuesten erfolgreichen Transaktionen."
+        transactions={recentTransactions}
+        columns={3}
+        showViewAll={false}
+        className="bg-gray-900"
+      />
 
       {/* Success Statistics */}
       <section className="py-24 bg-gray-50">
@@ -333,8 +414,8 @@ export default function TransaktionenPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-gray-50 p-8 rounded-lg">
               <p className="text-gray-600 mb-6 italic">
-                "SONNTAG AG hat unseren Verkaufsprozess professionell und diskret begleitet. 
-                Das anonyme Bieterverfahren hat uns einen optimalen Erlös gebracht."
+                &ldquo;SONNTAG AG hat unseren Verkaufsprozess professionell und diskret begleitet. 
+                Das anonyme Bieterverfahren hat uns einen optimalen Erlös gebracht.&rdquo;
               </p>
               <div className="text-sm text-gray-800">
                 <div className="font-semibold">Familienunternehmen Mittelhessen</div>
@@ -344,8 +425,8 @@ export default function TransaktionenPage() {
             
             <div className="bg-gray-50 p-8 rounded-lg">
               <p className="text-gray-600 mb-6 italic">
-                "Durch die Wertoptimierung vor dem Verkauf haben wir 30% mehr Erlös 
-                erzielt als ursprünglich erwartet."
+                &ldquo;Durch die Wertoptimierung vor dem Verkauf haben wir 30% mehr Erlös 
+                erzielt als ursprünglich erwartet.&rdquo;
               </p>
               <div className="text-sm text-gray-800">
                 <div className="font-semibold">Handelsunternehmen Gießen</div>

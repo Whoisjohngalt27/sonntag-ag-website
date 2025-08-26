@@ -99,7 +99,7 @@ export function loadConfig(): DownloaderConfig {
     };
     
     return { ...defaultConfig, ...envConfig };
-  } catch (error) {
+  } catch {
     console.warn('⚠️ Could not load custom config, using defaults');
     return defaultConfig;
   }

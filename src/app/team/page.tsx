@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import TeamWithBioAdapted from '@/components/ui-blocks/adapted/team-with-bio-adapted'
-import { teamMembers } from '@/lib/team-data'
+import { TeamWithBioAdapted } from '@/components/features/team'
+import { teamMembers } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'Unser Team | SONNTAG AG - M&A Beratung Gießen',

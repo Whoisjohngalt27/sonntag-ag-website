@@ -1,0 +1,13 @@
+export { ContactHeroSection } from './ContactHeroSection'
+export { ContactForm } from './ContactForm'
+export { ContactInfo } from './ContactInfo'
+export { ContactSection } from './ContactSection'
+export { ContactMap } from './ContactMap'
+export { ContactFAQ } from './ContactFAQ'
+
+export type { ContactHeroSectionProps } from './ContactHeroSection'
+export type { ContactFormProps } from './ContactForm'
+export type { ContactInfoProps } from './ContactInfo'
+export type { ContactSectionProps } from './ContactSection'
+export type { ContactMapProps } from './ContactMap'
+export type { ContactFAQProps } from './ContactFAQ'

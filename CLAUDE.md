@@ -1,396 +1,329 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-> **🚀 PHASE 2 UPDATE (August 26, 2025):** Component migration underway - Homepage reduced from 728 → 93 lines (87% reduction)!
-> Extracted 9 feature components for maximum reusability. All pages moving to modular architecture.
-> Focus on maintainability, performance, and developer experience.
+# SONNTAG AG Website - Project Intelligence Document
 
 ## 🎯 Project Overview
+**Client**: SONNTAG AG  
+**Type**: M&A Advisory Website  
+**Stack**: Next.js 14, TypeScript, Tailwind CSS  
+**Status**: Phase 2 Complete - Core Features Implemented  
+**Last Updated**: January 26, 2025
 
-SONNTAG AG website rebuild - A Next.js 14 application for a premier M&A advisory firm in Gießen, Germany, specializing in Mittelstand company succession with anonymous bidding processes and value optimization.
+---
 
-### Key Business Context
-- **Company**: SONNTAG AG - M&A Advisory & Business Succession
-- **Core Message**: "Wir verkaufen keine Unternehmen. Wir sichern Lebenswerke." (We don't sell companies. We secure life's work.)
-- **Services**: MARKTWERT (anonymous bidding process) + MEHRWERT (value enhancement)
-- **Target Market**: Gießen/Mittelhessen region, German Mittelstand companies
-- **Revenue Goal**: €100,000+ in first year from emergency business succession cases
+## 📁 Project Structure
 
-## 🚀 Common Development Commands
-
-### Development
-```bash
-# Install dependencies
-npm install
-
-# Run development server (http://localhost:3000)
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Type checking
-npm run type-check
-
-# Linting
-npm run lint
-```
-
-### Testing
-```bash
-# Currently no test framework configured
-# Consider adding: npm test (when tests are implemented)
-```
-
-## 🏗️ High-Level Architecture
-
-### Tech Stack
-- **Framework**: Next.js 14 with App Router
-- **Styling**: Tailwind CSS with custom design system
-- **Language**: TypeScript for type safety
-- **UI Components**: Custom component library based on Tailwind CSS Plus
-
-### Project Structure
 ```
 src/
-├── app/                     # Next.js 14 App Router pages (93 lines homepage!)
-│   ├── layout.tsx          # Root layout with metadata
-│   ├── page.tsx            # Homepage (reduced from 728 → 93 lines)
-│   ├── leistungen/         # Services page
-│   ├── transaktionen/      # Transactions page
-│   └── ueber-uns/          # About page
+├── app/                      # Next.js app directory
+│   ├── api/                 # API routes (contact, valuation)
+│   ├── blog/                # Blog system with articles
+│   ├── kontakt/             # Contact page
+│   ├── leistungen/          # Services page
+│   ├── referenzen/          # References page
+│   ├── team/                # Team page
+│   └── [emergency-pages]/   # 7 emergency service pages
 ├── components/
-│   ├── features/           # Feature-based components (NEW)
-│   │   ├── hero/           # Hero section module
-│   │   ├── stats/          # Statistics display
-│   │   ├── services/       # Services grid
-│   │   ├── bieterverfahren/ # Anonymous bidding showcase
-│   │   ├── wertmaximierung/ # Value maximization section
-│   │   ├── transactions/   # Recent deals display
-│   │   ├── team/           # Team showcase
-│   │   └── blog/           # Blog posts grid
-│   ├── ui/                 # Atomic design components
-│   │   ├── atoms/          # Button, Typography, Icon, Link, StatCard
-│   │   ├── molecules/      # FeatureCard, SectionHeader
-│   │   └── organisms/      # (ready for complex components)
-│   └── ui-blocks/          # Legacy UI component library
-│       ├── blocks/         # Downloaded Tailwind CSS Plus components
-│       ├── adapted/        # SONNTAG AG adapted versions
-│       └── navigation/     # Navigation components
-├── lib/                    # Utilities and helpers
-└── styles/                 # Global styles
+│   ├── features/            # Feature-specific components
+│   │   ├── blog/           # Blog components
+│   │   ├── contact/        # Contact form & sections
+│   │   ├── hero/           # Hero sections
+│   │   ├── services/       # Service components
+│   │   └── team/           # Team components
+│   └── ui/                 # Design system
+│       ├── atoms/          # Basic components
+│       ├── molecules/      # Composite components
+│       └── organisms/      # Complex components
+└── lib/
+    ├── analytics/          # GA4 tracking
+    ├── data/              # Static data
+    └── utils/             # Utilities
 ```
 
-### Component Architecture (Phase 2 - Modular)
-The project uses a **modular feature-based architecture with atomic design**:
-- **Feature Components**: Self-contained, reusable feature modules (hero, stats, services, etc.)
-- **Atomic Components**: Small, reusable UI pieces (atoms → molecules → organisms)
-- **Composition Over Inheritance**: Pages are pure composition of feature components
-- **UI Blocks (Legacy)**: Pre-built components being migrated to new architecture
-- **Design System**: Strict white/black/gray palette with minimal brand colors (blue/gold) for CTAs only
+---
 
-#### Component Size Standards
-- **Pages**: < 100 lines (pure composition)
-- **Feature Components**: < 200 lines (self-contained modules)
-- **Atomic Components**: < 100 lines (single responsibility)
+## ✅ Completed Features
 
-## 🎨 Design System Rules
+### Phase 1: Foundation (Complete)
+- ✅ Next.js 14 setup with TypeScript
+- ✅ Tailwind CSS configuration
+- ✅ Component architecture
+- ✅ Basic routing structure
 
-### Color Palette (STRICT)
+### Phase 2: Core Implementation (Complete)
+- ✅ Homepage with all sections
+- ✅ Navigation with mobile menu
+- ✅ Contact page with enhanced form:
+  - Service selection dropdown
+  - Urgency levels
+  - Preferred contact method
+  - WhatsApp integration
+- ✅ Services page (/leistungen)
+- ✅ Team page with bios
+- ✅ References page with testimonials
+- ✅ Blog system:
+  - Blog listing page
+  - 3 full blog articles
+  - Cross-linking between posts
+- ✅ Company value calculator
+- ✅ 7 emergency service pages
+- ✅ API routes for contact and valuation
+
+### Recent Improvements
+- ✅ Fixed all build errors
+- ✅ Enhanced contact form with service selection
+- ✅ Added comprehensive FAQ section
+- ✅ Implemented Google Maps integration
+- ✅ Created professional blog content
+- ✅ Fixed TypeScript issues
+
+---
+
+## 🚀 Immediate Next Steps
+
+### Priority 1: Calculator Enhancement (2-3 days)
 ```typescript
-// Primary colors for main components
-white: '#FFFFFF'        // Primary backgrounds
-black: '#000000'        // Primary text
-gray: {                 // Hierarchy and depth
-  50-800: Tailwind default gray scale
-}
-
-// Brand colors - CTAs ONLY
-sonntagBlue: '#1e3a8a'  // Primary CTA buttons
-sonntagGold: '#f59e0b'  // Secondary CTAs
+// Enhanced calculator features to implement:
+- Progress indicator for multi-step form
+- Real-time calculation updates with charts
+- PDF report generation
+- Lead capture optimization
+- Success stories integration
 ```
 
-### Component Adaptation Process
-1. **Preserve**: Keep HTML structure and Tailwind classes exactly as downloaded
-2. **Adapt**: Replace colors with white/black variants only
-3. **Maintain**: Keep all spacing, typography, and interactions unchanged
-
-## 📋 Current Implementation Status
-
-### ✅ Completed (As of August 26, 2025)
-
-#### Phase 2 Component Migration
-- **Homepage Transformation**: 728 → 93 lines (87% reduction) ✅
-- **Feature Components Extracted**: 9 modules (hero, stats, services, bieterverfahren, wertmaximierung, transactions, team, blog)
-- **Atomic Components**: 7 components (Button, Typography, Icon, Link, StatCard, FeatureCard, SectionHeader)
-- **TypeScript Coverage**: 100% with zero errors
-- **Component Reusability**: All components fully configurable
-
-#### Original Implementation
-- **Homepage**: Now modular with 93 lines (was 728 lines monolithic)
-- **All 4 Emergency Pages** (€50-100K revenue potential): ✅
-  - `/notverkauf-unternehmen-giessen` - 412 lines with full content
-  - `/schneller-unternehmensverkauf-giessen` - 425 lines with full content
-  - `/firma-sofort-verkaufen-giessen` - 429 lines with full content
-  - `/dringend-nachfolger-gesucht-giessen` - 482 lines with full content
-- **Services Page**: Complete with 428 lines, MARKTWERT/MEHRWERT sections
-- **Transactions Page**: Complete with 390 lines, recent deals showcase
-- **About Us Page**: Complete with 230 lines, company story and values
-- **Team Page**: Complete with 189 lines, executive profiles
-- **Contact Page**: UI complete with 302 lines (backend pending)
-- **Navigation System**: Fully functional navbar with all page links
-- **Footer Component**: Professional design with trust signals
-- **SEO Metadata**: Implemented on all 10 pages
-- **Vercel Deployment**: Site is live and deployed
-
-### 🚧 In Progress (Phase 2 Migration)
-- **Services Page Migration**: Breaking down 428 lines → < 100 lines
-- **Contact Page Migration**: Breaking down 435 lines → < 100 lines
-- **Emergency Pages Template**: Creating shared template for 4 pages (1,800 total lines → < 200)
-- **Compound Components**: Implementing Card.Header, Section.Content patterns
-
-### 🔜 Backend Implementation (Pending)
-- Contact form backend API implementation
-- Email notification system (Resend/SendGrid integration)
-- Google Analytics & conversion tracking setup
-
-### 🔴 Not Started (Next Priorities)
-**Problem-Solution Pages** (€25-50K potential):
-- `/unternehmensnachfolge-ohne-nachfolger-giessen`
-- `/firma-verkaufen-ohne-gewinn-giessen`
-- `/altersbedingte-geschaeftsaufgabe-giessen`
-
-**Technical Infrastructure**:
-- CRM integration (HubSpot/Pipedrive)
-- A/B testing framework
-- Chat widget implementation
-- Exit-intent popups
-- Lead scoring system
-
-### 📊 Progress Metrics
-
-#### Phase 2 Migration Status
-- **Homepage**: 728 → 93 lines (87% reduction) ✅
-- **Services Page**: 428 lines (pending migration)
-- **Contact Page**: 435 lines (pending migration)
-- **Emergency Pages**: 4 × ~450 lines (pending template)
-- **Component Extraction**: 9/20+ components complete
-
-#### Overall Project
-- **Pages Created**: 10/14+ (71%)
-- **Content Filled**: 10/10 pages (100%)
-- **Revenue Pages**: 4/4 emergency pages (100%) ✅
-- **Total Lines of Code**: 4,015 → targeting < 1,000 after migration
-- **Lead Capture**: Form UI complete, backend API pending
-- **Deployment Status**: Live on Vercel
-
-### SEO Strategy
-- **Emergency Keywords**: High conversion, low competition (€50K-100K potential)
-- **Problem-Based Keywords**: Medium commercial value
-- **Local SEO**: Focus on Gießen/Mittelhessen region
-- **Technical SEO**: Built-in Next.js optimization with proper meta tags
-
-## 🚨 Important Conventions
-
-### File Naming
-- **Components**: PascalCase (e.g., `HeroSection.tsx`)
-- **Directories**: kebab-case (e.g., `hero-sections/`)
-- **Pages**: kebab-case URLs for SEO (e.g., `/ma-beratung-giessen`)
-
-### TypeScript Requirements
-- Always use proper TypeScript interfaces (no `any` types)
-- Define props interfaces for all components
-- Use strict typing for better IDE support
-
-### Component Documentation
-Every adapted component should include:
+### Priority 2: Emergency Page Optimization (1-2 days)
 ```typescript
-/**
- * Component: [Name]
- * Source: Tailwind CSS Plus - [Category]
- * Adaptation: Colors only (white/black theme)
- * Structure: Preserved exactly as downloaded
- */
+// Emergency page improvements:
+- Floating emergency hotline button
+- Urgency indicators with countdown timers
+- Emergency-specific testimonials
+- Quick contact forms (3 fields max)
+- Trust badges and certifications
 ```
 
-## 💡 Backend Implementation Guide
-
-### Contact Form API Requirements
+### Priority 3: Performance Optimization (2-3 days)
 ```typescript
-// /src/app/api/contact/route.ts
-interface ContactFormData {
-  name: string
-  email: string
-  phone?: string
-  company?: string
-  message: string
-  urgency?: 'normal' | 'urgent' | 'emergency'
-  source?: string // Which page the form was submitted from
-}
+// Performance improvements:
+- Implement lazy loading for images
+- Add loading skeletons
+- Optimize bundle size with code splitting
+- Implement service worker for offline support
+- Add proper error boundaries
 ```
 
-### Email Service Setup (Resend Example)
+### Priority 4: SEO Implementation (1-2 days)
+```typescript
+// SEO enhancements:
+- Add structured data (JSON-LD)
+- Create XML sitemap
+- Implement canonical URLs
+- Add Open Graph tags
+- Create robots.txt
+- Optimize meta descriptions
+```
+
+---
+
+## 📊 Key Metrics to Track
+
+### Performance Targets
+- **Lighthouse Score**: > 90 all categories
+- **Core Web Vitals**:
+  - LCP: < 2.5s
+  - FID: < 100ms
+  - CLS: < 0.1
+- **Bundle Size**: < 200KB initial JS
+
+### Business Metrics
+- **Contact Form Submissions**: Track via GA4
+- **Calculator Completions**: Measure drop-off rates
+- **Blog Engagement**: Time on page, scroll depth
+- **Emergency Page Conversions**: Click-to-call rate
+
+---
+
+## 🛠️ Development Commands
+
 ```bash
-npm install resend react-email @react-email/components
+# Development
+npm run dev              # Start development server
+npm run build           # Build for production
+npm run start           # Start production server
+
+# Code Quality
+npm run lint            # Run ESLint
+npm run type-check      # TypeScript validation
+npm run format          # Prettier formatting
+
+# Testing (to be implemented)
+npm run test            # Run tests
+npm run test:coverage   # Coverage report
+npm run test:e2e        # E2E tests
 ```
 
-### Environment Variables Needed
+---
+
+## 📝 Important Business Logic
+
+### Contact Form Flow
+1. User fills form with service selection
+2. Form validates client-side
+3. POST to `/api/contact`
+4. Email sent via Resend (when API key configured)
+5. GA4 tracking event fired
+6. Success message displayed
+
+### Calculator Logic
+- Industry multipliers: 4-8x EBITDA
+- Confidence levels based on data completeness
+- Results stored in session for follow-up
+- Triggers lead capture at completion
+
+### Emergency Pages Strategy
+- SEO-optimized for crisis keywords
+- Direct phone CTAs above fold
+- Simplified forms for urgent cases
+- 24/7 hotline prominently displayed
+
+---
+
+## 🔐 Environment Variables
+
 ```env
-# Email Service
-RESEND_API_KEY=re_xxxxx
-NOTIFICATION_EMAIL=service@sonnt-ag.com
+# Required for production
+NEXT_PUBLIC_GA_ID=          # Google Analytics
+RESEND_API_KEY=             # Email service
+NEXT_PUBLIC_SITE_URL=       # Base URL
 
-# Analytics
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
-NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
-
-# CRM (Future)
-HUBSPOT_API_KEY=xxxxx
+# Optional
+HUBSPOT_API_KEY=            # CRM integration
+SLACK_WEBHOOK_URL=          # Notifications
 ```
 
-### API Route Template
+---
+
+## 🚨 Known Issues & TODOs
+
+### High Priority
+- [ ] Calculator needs PDF generation
+- [ ] Email sending not configured (needs Resend API key)
+- [ ] Mobile menu animation glitchy on iOS
+- [ ] Form validation messages need German translation
+
+### Medium Priority
+- [ ] Add loading states to all async operations
+- [ ] Implement proper error boundaries
+- [ ] Add breadcrumbs to blog posts
+- [ ] Create 404 and 500 error pages
+
+### Low Priority
+- [ ] Add animations to sections
+- [ ] Implement dark mode
+- [ ] Add cookie consent banner
+- [ ] Create style guide documentation
+
+---
+
+## 📚 Phase 3 & 4 Planning
+
+### Phase 3: Advanced Features (Next Sprint)
+- Admin dashboard for content management
+- Advanced analytics dashboard
+- A/B testing framework
+- Email automation sequences
+- CRM integration (HubSpot/Salesforce)
+
+### Phase 4: Quality Assurance
+- Comprehensive test suite (90% coverage)
+- E2E tests with Playwright
+- Accessibility audit (WCAG 2.1 AA)
+- Performance monitoring (Sentry)
+- Complete technical documentation
+
+---
+
+## 🎨 Design System
+
+### Colors
 ```typescript
-// Basic structure for contact form handler
-export async function POST(request: Request) {
-  // 1. Parse and validate form data
-  // 2. Send notification email to team
-  // 3. Send confirmation email to user
-  // 4. Store lead in database/CRM
-  // 5. Track conversion in Analytics
-  // 6. Return success/error response
+const colors = {
+  sonntagBlue: '#003A70',    // Primary brand
+  sonntagGray: '#4A5568',    // Text
+  sonntagLight: '#F7FAFC',   // Backgrounds
+  emergency: '#DC2626',      // Urgent CTAs
+  success: '#10B981'         // Positive actions
 }
 ```
 
-## 🔧 Development Guidelines
+### Typography
+- **Headings**: Inter (sans-serif)
+- **Body**: Inter (sans-serif)
+- **Sizes**: Based on Tailwind scale
 
-### ⚠️ CRITICAL: Component Selection Process
-**ALWAYS follow this order when implementing any UI element:**
+### Components
+- Atomic design pattern
+- TypeScript interfaces for all props
+- Consistent naming convention
+- Documented with comments
 
-1. **FIRST - Check Existing Blocks**: 
-   - Search in `components/ui-blocks/blocks/` for existing Tailwind CSS Plus components
-   - Look for similar patterns in already adapted components
-   - Check the team-section, hero sections, feature sections, etc.
+---
 
-2. **SECOND - Find Tailwind CSS Templates**:
-   - Search Tailwind CSS Plus library for matching components
-   - Look for official Tailwind UI components
-   - Check for community Tailwind templates
+## 🔄 Git Workflow
 
-3. **THIRD - Adapt Existing Components**:
-   - Use the closest matching component as a base
-   - Adapt colors to white/black theme
-   - Preserve all structural elements
+### Branch Strategy
+```bash
+main                # Production
+├── develop         # Integration
+    ├── feature/*   # New features
+    ├── fix/*       # Bug fixes
+    └── hotfix/*    # Emergency fixes
+```
 
-4. **LAST RESORT - Custom Creation**:
-   - Only create custom components if no suitable template exists
-   - Must follow established Tailwind utility patterns
-   - Document why no existing template was suitable
+### Commit Convention
+```
+feat: Add new feature
+fix: Fix bug
+docs: Update documentation
+style: Format code
+refactor: Refactor code
+test: Add tests
+chore: Update dependencies
+```
 
-### When Creating New Pages
-1. **Always check** `components/ui-blocks/blocks/` for existing sections first
-2. Use existing page templates as reference
-3. Include proper SEO metadata in page files
-4. Follow the established URL structure (kebab-case, German keywords)
-5. Maintain consistent component usage
+---
 
-### When Adapting Components
-1. Save original to `components/ui-blocks/blocks/`
-2. Create adapted version in `components/ui-blocks/adapted/`
-3. Only change colors, preserve all other properties
-4. Document source and changes
+## 📞 Support & Resources
 
-### Performance Considerations
-- Use Next.js Image component for optimization
-- Implement lazy loading for non-critical components
-- Keep bundle size minimal
-- Target Core Web Vitals: LCP < 2.5s, FID < 100ms, CLS < 0.1
+### Documentation
+- [Next.js Docs](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 
-## 📝 Related Documentation
+### Project Contacts
+- **Technical Issues**: Create GitHub issue
+- **Feature Requests**: Document in PRD format
+- **Urgent Support**: Check emergency procedures
 
-Key files to reference:
-- `.cursorrules` - Main development standards
-- `.cursorrules-ui-blocks` - UI component adaptation rules
-- `PRD-SONNTAG-AG-WEBSITE.md` - Product requirements and roadmap
-- `README.md` - Project overview and setup
+---
 
-## 🎯 Current Priorities
+## 🎯 Quick Reference
 
-### 🚀 Phase 2 Migration (In Progress - Day 13-15)
-1. **Complete Homepage Extraction** ✅
-   - Extracted 9 feature components
-   - Reduced homepage from 728 → 93 lines (87%)
-   
-2. **Services & Contact Pages** (Day 13-14)
-   - Break down `/leistungen` (428 → < 100 lines)
-   - Break down `/kontakt` (435 → < 100 lines)
-   - Extract form, map, and info components
+### Most Edited Files
+1. `/src/app/page.tsx` - Homepage
+2. `/src/components/features/contact/ContactForm.tsx` - Contact form
+3. `/src/app/unternehmensbewertung-rechner/page.tsx` - Calculator
+4. `/src/lib/analytics/analytics.ts` - Tracking
 
-3. **Emergency Pages Template** (Day 15)
-   - Create shared emergency template
-   - Extract EmergencyHero, EmergencyBanner, EmergencyCTA
-   - Reduce each page from ~450 → < 50 lines
-   - Total reduction: 1,800 → < 200 lines
+### Key API Endpoints
+- `POST /api/contact` - Contact form submission
+- `POST /api/valuation` - Calculator results
 
-### 🔧 Backend Implementation (Next Priority)
-1. **Contact Form Backend** - Critical for lead capture
-   - Create API route at `/api/contact`
-   - Integrate email service (Resend/SendGrid)
-   - Add form validation and error handling
-   - Set up auto-responder emails
+### Testing Checklist
+- [ ] All pages load without errors
+- [ ] Contact form submits successfully
+- [ ] Calculator completes calculation
+- [ ] Mobile navigation works
+- [ ] Blog posts render correctly
+- [ ] Emergency pages have working CTAs
 
-2. **Analytics & Conversion Tracking**
-   - Install Google Analytics 4
-   - Set up conversion goals
-   - Add Google Tag Manager
-   - Implement phone call tracking
+---
 
-### 📈 Week 1 - Post-Migration
-1. **Lead Capture Enhancement**
-   - Add exit-intent popup for emergency pages
-   - Implement chat widget (Intercom/Crisp)
-   - Create downloadable M&A guide as lead magnet
-   - A/B test CTA button colors and text
-
-2. **Create Problem-Solution Pages** (€25-50K potential)
-   - `/unternehmensnachfolge-ohne-nachfolger-giessen`
-   - `/firma-verkaufen-ohne-gewinn-giessen`
-   - `/altersbedingte-geschaeftsaufgabe-giessen`
-
-3. **Trust Building Elements**
-   - Add client testimonials section
-   - Create case study pages for major deals
-   - Add trust badges and certifications
-   - Implement social proof notifications
-
-### 🔧 Technical Infrastructure (Week 2)
-1. **Backend Services**
-   - CRM integration (HubSpot/Pipedrive)
-   - Email automation setup
-   - Lead scoring implementation
-   - Webhook notifications
-
-2. **SEO & Content**
-   - Create sitemap.xml
-   - Add robots.txt
-   - Implement schema markup
-   - Start blog for thought leadership
-
-### Success Metrics (Phase 2)
-- **Code Reduction**: 85% reduction across all pages (target < 1,000 total lines)
-- **Component Reusability**: 100% of sections extractable and configurable
-- **Performance**: Maintain or improve Core Web Vitals
-- **Developer Experience**: < 100 line pages, clear component boundaries
-- **Type Safety**: Zero TypeScript errors, full coverage
-
-### Business Metrics (Post-Launch)
-- **Immediate**: First lead within 24 hours of backend going live
-- **Week 1**: 10+ qualified leads captured
-- **Month 1**: 50+ leads, €50,000+ pipeline
-- **Month 2**: Top 3 rankings for all emergency keywords
-- **Quarter 1**: €100,000+ in closed deals from emergency services
-
-Remember: Focus on creating modular, maintainable components that enable rapid iteration. The architecture should support A/B testing, easy updates, and new page creation through component composition.
+*This document is the source of truth for AI assistants working on this project. Keep it updated with significant changes.*

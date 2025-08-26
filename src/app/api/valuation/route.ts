@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
 
       // Send email with results (implementation would go here)
       if (process.env.RESEND_API_KEY) {
-        await sendValuationEmail(body.email, body.name, result)
+        await sendValuationEmail(body.email)
       }
 
       // Track conversion in analytics (implementation would go here)
@@ -155,7 +155,7 @@ async function storeLead(data: any) {
 }
 
 // Helper function to send email (placeholder)
-async function sendValuationEmail(email: string, name: string | undefined, result: ValuationResult) {
+async function sendValuationEmail(email: string) {
   // TODO: Implement email sending with Resend or similar service
   console.log('Sending email to:', email)
   
@@ -170,7 +170,7 @@ async function sendValuationEmail(email: string, name: string | undefined, resul
 }
 
 // Helper function to track analytics (placeholder)
-function trackConversion(event: string, data: any) {
+function trackConversion(event: string, data: Record<string, unknown>) {
   // TODO: Implement Google Analytics or similar tracking
   console.log('Tracking conversion:', event, data)
   

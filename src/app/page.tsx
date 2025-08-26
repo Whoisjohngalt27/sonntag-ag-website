@@ -7,7 +7,7 @@ import { ServicesSection } from '@/components/features/services'
 import { TransactionsSection } from '@/components/features/transactions'
 import { TeamSection } from '@/components/features/team'
 import { BlogSection } from '@/components/features/blog'
-import FullscreenStatement from '@/components/ui-blocks/adapted/fullscreen-statement'
+import { FullscreenStatement } from '@/components/features/hero'
 
 // Import icons for features
 import { EyeSlashIcon, UserGroupIcon, ChartBarIcon } from '@heroicons/react/20/solid'

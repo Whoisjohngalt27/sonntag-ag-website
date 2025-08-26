@@ -6,7 +6,7 @@
 
 import Link from 'next/link'
 import { ChevronRightIcon } from '@heroicons/react/24/outline'
-import { ShaderAnimation } from '@/components/ui/shader-animation'
+import { ShaderAnimation } from '@/components/ui/atoms/animations'
 import { HeroSectionProps } from './HeroSection.types'
 
 const defaultProps: HeroSectionProps = {

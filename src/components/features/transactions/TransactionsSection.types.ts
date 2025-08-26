@@ -2,6 +2,8 @@
  * Type definitions for TransactionsSection component
  */
 
+import { Transaction } from './TransactionCard.types'
+
 export interface TransactionsSectionProps {
   title?: string
   subtitle?: string
@@ -11,12 +13,5 @@ export interface TransactionsSectionProps {
   viewAllText?: string
   viewAllHref?: string
   className?: string
-}
-
-export interface Transaction {
-  date: string
-  company: string
-  buyer: string
-  timeframe: string
-  status?: 'successful' | 'pending' | 'completed'
+  columns?: 1 | 2 | 3 | 4 | 5 | 6
 }

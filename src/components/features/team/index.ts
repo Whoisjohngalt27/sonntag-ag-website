@@ -4,4 +4,5 @@
  */
 
 export { TeamSection } from './TeamSection'
-export type { TeamSectionProps, TeamMember } from './TeamSection.types'
+export { default as TeamWithBioAdapted } from './team-with-bio-adapted'
+export type { TeamSectionProps } from './TeamSection.types'

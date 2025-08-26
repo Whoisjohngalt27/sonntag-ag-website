@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import type { Metadata } from 'next'
 
 // Metadata would normally be exported, but since this uses client-side state, we'll handle SEO differently
 // export const metadata: Metadata = {
@@ -35,19 +34,19 @@ interface ValuationResult {
   confidence: number
 }
 
-// Industry multipliers based on German M&A market data
-const industryMultipliers = {
-  'technology': { ebitda: 8.5, revenue: 2.5 },
-  'manufacturing': { ebitda: 5.5, revenue: 0.8 },
-  'services': { ebitda: 6.0, revenue: 1.2 },
-  'retail': { ebitda: 4.5, revenue: 0.6 },
-  'healthcare': { ebitda: 7.5, revenue: 1.8 },
-  'construction': { ebitda: 4.0, revenue: 0.5 },
-  'logistics': { ebitda: 5.0, revenue: 0.7 },
-  'food': { ebitda: 5.5, revenue: 0.9 },
-  'energy': { ebitda: 6.5, revenue: 1.5 },
-  'real-estate': { ebitda: 8.0, revenue: 2.0 },
-}
+// Industry multipliers based on German M&A market data - removed as unused
+// const industryMultipliers = {
+//   'technology': { ebitda: 8.5, revenue: 2.5 },
+//   'manufacturing': { ebitda: 5.5, revenue: 0.8 },
+//   'services': { ebitda: 6.0, revenue: 1.2 },
+//   'retail': { ebitda: 4.5, revenue: 0.6 },
+//   'healthcare': { ebitda: 7.5, revenue: 1.8 },
+//   'construction': { ebitda: 4.0, revenue: 0.5 },
+//   'logistics': { ebitda: 5.0, revenue: 0.7 },
+//   'food': { ebitda: 5.5, revenue: 0.9 },
+//   'energy': { ebitda: 6.5, revenue: 1.5 },
+//   'real-estate': { ebitda: 8.0, revenue: 2.0 },
+// }
 
 export default function UnternehmensbewertungRechner() {
   const [currentStep, setCurrentStep] = useState(1)
@@ -527,7 +526,7 @@ export default function UnternehmensbewertungRechner() {
             <div className="border-b pb-6">
               <h3 className="text-lg font-semibold text-black mb-2">Was ist der EBITDA?</h3>
               <p className="text-gray-600">
-                EBITDA steht für "Earnings Before Interest, Taxes, Depreciation and Amortization" - 
+                EBITDA steht für &ldquo;Earnings Before Interest, Taxes, Depreciation and Amortization&rdquo; - 
                 auf Deutsch: Gewinn vor Zinsen, Steuern und Abschreibungen. Es ist eine wichtige Kennzahl zur Unternehmensbewertung.
               </p>
             </div>
